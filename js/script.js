@@ -43,31 +43,63 @@ function addTask(nombreTarea, fechaTarea, completoTarea) {
 }
 
 // taskStatus(): Actualiza el estado de una tarea.
+// function taskStatus(id, complete) {
+//   // Recorre la lista de tareas.
+//   for (let i = 0; i < tareas.length; i++) {
+//     // Cuando encuentra la tarea con el id correcto cambia su estado.
+//     if (tareas[i]._id === id) {
+//       tareas[i].complete = complete;
+//       break;
+//     }
+//   }
+//   // Guarda la lista de tareas en localStorage.
+//   localStorage.setItem('tareas', JSON.stringify(tareas));
+
+//Add task try
+
 function taskStatus(id, complete) {
-  // Recorre la lista de tareas.
-  for (let i = 0; i < tareas.length; i++) {
-    // Cuando encuentra la tarea con el id correcto cambia su estado.
-    if (tareas[i]._id === id) {
-      tareas[i].complete = complete;
-      break;
-    }
-  }
-  // Guarda la lista de tareas en localStorage.
-  localStorage.setItem('tareas', JSON.stringify(tareas));
+  const fetchMarkTask = {
+    method: 'MARK',
+    //Check this one
+  };
+  fetch('https://js2-tareas-api.netlify.app/api/tareas?uid=22', fetchMarkTask)
+    .then((response) => response)
+    .then((data) => {
+      for (let i = 0; i < tareas.length; i++) {
+        if (tareas[i]._id === id) {
+          tareas[i].complete = complete;
+    };
 }
 
 // deleteTask(): Borra una tarea.
+// function deleteTask(id) {
+//   // Recorre la lista de tareas.
+//   for (let i = 0; i < tareas.length; i++) {
+//     // Cuando encuentra la tarea con el id correcto la borra.
+//     if (tareas[i]._id === id) {
+//       tareas.splice(i, 1);
+//       break;
+//     }
+//   }
+//   // Guarda la lista de tareas en localStorage.
+//   localStorage.setItem('tareas', JSON.stringify(tareas));
+// }
+
+//try for delete task
+
 function deleteTask(id) {
-  // Recorre la lista de tareas.
-  for (let i = 0; i < tareas.length; i++) {
-    // Cuando encuentra la tarea con el id correcto la borra.
-    if (tareas[i]._id === id) {
-      tareas.splice(i, 1);
-      break;
-    }
-  }
-  // Guarda la lista de tareas en localStorage.
-  localStorage.setItem('tareas', JSON.stringify(tareas));
+  const fetchDeleteTask = {
+    method: 'DELETE',
+  };
+  fetch('https://js2-tareas-api.netlify.app/api/tareas?uid=22', fetchDeleteTask)
+    .then((response) => response)
+    .then((data) => {
+      for (let i = 0; i < tareas.length; i++) {
+        // Cuando encuentra la tarea con el id correcto la borra.
+        if (tareas[i]._id === id) {
+          tareas.splice(i, 1);
+          break;
+    };
 }
 
 //
